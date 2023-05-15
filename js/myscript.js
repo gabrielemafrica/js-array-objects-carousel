@@ -70,3 +70,101 @@ activeItem.classList.add('off');
 const selectedItem = document.querySelector('.item img')
 selectedItem.classList.add('selected');
 
+//funzionamento tasti
+
+//prendo la freccie
+const frecciaGiu = document.querySelector('.fa-circle-arrow-down');
+const frecciaSu = document.querySelector('.fa-circle-arrow-up');
+
+//prendo le immagini
+const arrayItemSchede = document.querySelectorAll('#container-schede .scheda');
+const arrayCaruselImg = document.querySelectorAll('#carusel .item img');
+const arrayCaruselCover = document.querySelectorAll('#carusel .item .cover');
+
+console.log('schede', arrayItemSchede);
+console.log('img', arrayCaruselImg);
+console.log('schede', arrayCaruselCover);
+
+//funzionamento
+let immagineAttiva = 0;
+
+//click su
+frecciaGiu.addEventListener('click', vaiGiu);
+ 
+//click su
+frecciaSu.addEventListener('click', vaiSu);
+
+
+
+
+
+//funzioni
+
+function vaiGiu() {
+    if (immagineAttiva < (arrayItemSchede.length - 1)) {
+
+        //tolgo active
+        arrayItemSchede[immagineAttiva].classList.remove('active');
+        arrayCaruselImg[immagineAttiva].classList.remove('selected');
+        arrayCaruselCover[immagineAttiva].classList.remove('off');
+
+        //passo al successivo
+        immagineAttiva++;
+
+        //aggiungo active al nuovo elemento
+        arrayItemSchede[immagineAttiva].classList.add('active');
+        arrayCaruselImg[immagineAttiva].classList.add('selected');
+        arrayCaruselCover[immagineAttiva].classList.add('off');
+
+    }else if(immagineAttiva === (arrayItemSchede.length - 1)){
+
+        //tolgo active
+        arrayItemSchede[immagineAttiva].classList.remove('active');
+        arrayCaruselImg[immagineAttiva].classList.remove('selected');
+        arrayCaruselCover[immagineAttiva].classList.remove('off');
+
+        //torno alla prima
+        immagineAttiva = 0;
+
+        //aggiungo active
+        arrayItemSchede[immagineAttiva].classList.add('active');
+        arrayCaruselImg[immagineAttiva].classList.add('selected');
+        arrayCaruselCover[immagineAttiva].classList.add('off');
+        
+    }
+};
+
+function vaiSu() {
+    if (immagineAttiva > 0) {
+
+        //tolgo active
+        arrayItemSchede[immagineAttiva].classList.remove('active');
+        arrayCaruselImg[immagineAttiva].classList.remove('selected');
+        arrayCaruselCover[immagineAttiva].classList.remove('off');
+
+        //passo al precedente
+        immagineAttiva--;
+
+        //aggiungo active al nuovo elemento
+        arrayItemSchede[immagineAttiva].classList.add('active');
+        arrayCaruselImg[immagineAttiva].classList.add('selected');
+        arrayCaruselCover[immagineAttiva].classList.add('off');
+
+    }else if(immagineAttiva === 0){
+
+        //tolgo active
+        arrayItemSchede[immagineAttiva].classList.remove('active');
+        arrayCaruselImg[immagineAttiva].classList.remove('selected');
+        arrayCaruselCover[immagineAttiva].classList.remove('off');
+
+        //torno alla prima
+        immagineAttiva = arrayItemSchede.length - 1;
+
+        //aggiungo active
+        arrayItemSchede[immagineAttiva].classList.add('active');
+        arrayCaruselImg[immagineAttiva].classList.add('selected');
+        arrayCaruselCover[immagineAttiva].classList.add('off');
+        
+
+    }
+};
