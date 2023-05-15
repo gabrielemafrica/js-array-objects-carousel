@@ -94,12 +94,8 @@ frecciaGiu.addEventListener('click', vaiGiu);
 //click su
 frecciaSu.addEventListener('click', vaiSu);
 
-
-
-
-
 //funzioni
-
+//freccia giu
 function vaiGiu() {
     if (immagineAttiva < (arrayItemSchede.length - 1)) {
 
@@ -133,7 +129,7 @@ function vaiGiu() {
         
     }
 };
-
+//freccia su
 function vaiSu() {
     if (immagineAttiva > 0) {
 
@@ -164,7 +160,5 @@ function vaiSu() {
         arrayItemSchede[immagineAttiva].classList.add('active');
         arrayCaruselImg[immagineAttiva].classList.add('selected');
         arrayCaruselCover[immagineAttiva].classList.add('off');
-        
-
     }
 };
