@@ -18,12 +18,11 @@ body{
 
 /* carusel e scheda */
 
-#scheda{
+#container-schede{
     width: 80%;
     height: 400px;
     background-color: red;
-    position: relative;
-    /* display: none; */
+    
 }
 #carusel{
     width: 20%;
@@ -33,7 +32,14 @@ body{
 
 /* scheda */
 
-#scheda .immagine{
+.scheda{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: none;
+}
+
+.scheda .immagine{
     width: 100%;
     height: 100%;
     
@@ -45,13 +51,15 @@ body{
     object-fit: cover;
 }
 
-#scheda .txt{
+.scheda .txt{
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 15px 10px;
+    border-radius: 10px;
     color: white;
+    width: 50%;
     position: absolute;
-    right: 0%;
-    bottom: 0;
-    transform: translate(-10%, -100%);
-
+    right: 20px;
+    bottom: 20px;
 }
 
 .txt h5{
@@ -60,6 +68,28 @@ body{
 
 #carusel{
     position: relative;
+}
+
+/* carusel */
+#carusel .item{
+    width: 100%;
+    height: calc(100% / 5);
+    position: relative;
+}
+
+.item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item .cover{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;  
 }
 
 /* bottoni */
@@ -91,4 +121,11 @@ body{
 
 .off{
     display: none;
+}
+.selected{
+    border: 3px solid yellow;
+}
+
+.item:first-child .cover{
+    border: 5px solid red;
 }

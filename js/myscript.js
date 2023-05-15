@@ -22,86 +22,51 @@ const images = [
         text: "Marvel\\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay."
     }
 ];
+//prendo i container
 
+const container = document.getElementById('container');
+const containerSchede = document.getElementById('container-schede');
+const containerCarusel = document.getElementById('carusel');
 
+// ciclo gli oggetti nella pagina
 
-//array di oggetti
-const persone = [
-    {
-        nome: 'Pippo',
-        cognome: 'Baudo',
-        eta: 68
-    },
-    {
-        nome: 'Maria',
-        cognome: 'Massimi',
-        eta: 12
-    },
-    {
-        nome: 'Felice',
-        cognome: 'Pistoletta',
-        eta: 77
-    },
-    {
-        nome: 'Massimo',
-        cognome: 'Massimi',
-        eta: 2
-    },
-    {
-        nome: 'Pluto',
-        cognome: 'Bello',
-        eta: 5
-    },
-    {
-        nome: 'Pino',
-        cognome: 'Gatto',
-        eta: 44
-    },
-    {
-        nome: 'Franco',
-        cognome: 'Bollo',
-        eta: 14
-    },
-    {
-        nome: 'Remo',
-        cognome: 'Labarca',
-        eta: 42
-    },
-    {
-        nome: 'Anna',
-        cognome: 'Cocca',
-        eta: 18
-    },
-    {
-        nome: 'Giacomo',
-        cognome: 'Bianchi',
-        eta: 8
-    }
+images.forEach(element => {
 
- 
-]
+    //popolo schede
+    const scheda =
+        `
+        <div class="scheda">
+            <div class="immagine">
+                <img src="${element.image}" alt="img">
+            </div>
+            <div class="txt">
+                <h5>${element.title}</h5>
+                <p>${element.text}</p>
+            </div>
+        </div>
+        `;
+    containerSchede.innerHTML += scheda;
 
-//aggiungo all'array
-
-//con patente
-const conPatente = persone.map((persona) => {
-    if (persona.eta < 18) {
-        persona.patente = 'Minorenne, non può guidare';
-    }else{
-        persona.patente = 'Maggiorenne, può guidare';
-    }
-    return persona;
-});
-console.log('Con Patente: ', conPatente);
-
-//patenteFrase
-const patenteFrase = persone.map((persona) => {
-    const nome = persona.nome + ' ' + persona.cognome;
-    let patente = ' minorenne, non può guidare';
-    if (persona.eta >= 18) {
-        patente = ' maggiorenne, può guidare';
-    }
-    return nome + patente;
+    //popolo carusel
+    const caruselItem =
+        `
+        <div class="item">
+            <img src="${element.image}" alt="carusel">
+            <div class="cover"></div>
+        </div>
+        `;
+    containerCarusel.innerHTML += caruselItem;
     
 });
-console.log('Patente frase: ', patenteFrase);
+
+//assegno classi active
+
+const activeScheda = document.querySelector('.scheda:first-child')
+activeScheda.classList.add('active');
+
+const activeItem = document.querySelector('.item .cover')
+activeItem.classList.add('off');
+
+const selectedItem = document.querySelector('.item img')
+selectedItem.classList.add('selected');
+
