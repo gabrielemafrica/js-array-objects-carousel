@@ -22,6 +22,7 @@ const images = [
         text: "Marvel\\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay."
     }
 ];
+
 //prendo i container
 
 const container = document.getElementById('container');
@@ -58,23 +59,18 @@ images.forEach(element => {
     containerCarusel.innerHTML += caruselItem;
     
 });
-
+/*
 //assegno classi active
 
-const activeScheda = document.querySelector('.scheda:first-child')
+const activeScheda = document.querySelector('.scheda:first-child');
 activeScheda.classList.add('active');
 
-const activeItem = document.querySelector('.item .cover')
+const activeItem = document.querySelector('.item .cover');
 activeItem.classList.add('off');
 
-const selectedItem = document.querySelector('.item img')
+const selectedItem = document.querySelector('.item img');
 selectedItem.classList.add('selected');
-
-//funzionamento tasti
-
-//prendo la freccie
-const frecciaGiu = document.querySelector('.fa-circle-arrow-down');
-const frecciaSu = document.querySelector('.fa-circle-arrow-up');
+*/
 
 //prendo le immagini
 const arrayItemSchede = document.querySelectorAll('#container-schede .scheda');
@@ -88,77 +84,84 @@ console.log('schede', arrayCaruselCover);
 //funzionamento
 let immagineAttiva = 0;
 
-//click su
+//assegno classe active
+arrayItemSchede[immagineAttiva].classList.add('active');
+arrayCaruselImg[immagineAttiva].classList.add('selected');
+arrayCaruselCover[immagineAttiva].classList.add('off');
+
+
+//funzionamento tasti
+
+//prendo la freccie
+const frecciaGiu = document.querySelector('.fa-circle-arrow-down');
+const frecciaSu = document.querySelector('.fa-circle-arrow-up');
+
+//click Giu
 frecciaGiu.addEventListener('click', vaiGiu);
+
  
 //click su
 frecciaSu.addEventListener('click', vaiSu);
 
+
+//auto play
+
+const buttonPlay = document.querySelector('fa-circle-play');
+
+
+
+
+
 //funzioni
 //freccia giu
 function vaiGiu() {
-    if (immagineAttiva < (arrayItemSchede.length - 1)) {
 
-        //tolgo active
-        arrayItemSchede[immagineAttiva].classList.remove('active');
-        arrayCaruselImg[immagineAttiva].classList.remove('selected');
-        arrayCaruselCover[immagineAttiva].classList.remove('off');
+    //tolgo active
+    arrayItemSchede[immagineAttiva].classList.remove('active');
+    arrayCaruselImg[immagineAttiva].classList.remove('selected');
+    arrayCaruselCover[immagineAttiva].classList.remove('off');
+    
+
+    if (immagineAttiva < (arrayItemSchede.length - 1)) {
 
         //passo al successivo
         immagineAttiva++;
 
-        //aggiungo active al nuovo elemento
-        arrayItemSchede[immagineAttiva].classList.add('active');
-        arrayCaruselImg[immagineAttiva].classList.add('selected');
-        arrayCaruselCover[immagineAttiva].classList.add('off');
-
     }else if(immagineAttiva === (arrayItemSchede.length - 1)){
 
-        //tolgo active
-        arrayItemSchede[immagineAttiva].classList.remove('active');
-        arrayCaruselImg[immagineAttiva].classList.remove('selected');
-        arrayCaruselCover[immagineAttiva].classList.remove('off');
-
         //torno alla prima
-        immagineAttiva = 0;
+        immagineAttiva = 0; 
 
-        //aggiungo active
-        arrayItemSchede[immagineAttiva].classList.add('active');
-        arrayCaruselImg[immagineAttiva].classList.add('selected');
-        arrayCaruselCover[immagineAttiva].classList.add('off');
-        
     }
+
+    //aggiungo active al nuovo elemento
+    arrayItemSchede[immagineAttiva].classList.add('active');
+    arrayCaruselImg[immagineAttiva].classList.add('selected');
+    arrayCaruselCover[immagineAttiva].classList.add('off');
 };
+
 //freccia su
 function vaiSu() {
-    if (immagineAttiva > 0) {
 
-        //tolgo active
-        arrayItemSchede[immagineAttiva].classList.remove('active');
-        arrayCaruselImg[immagineAttiva].classList.remove('selected');
-        arrayCaruselCover[immagineAttiva].classList.remove('off');
+    //tolgo active
+    arrayItemSchede[immagineAttiva].classList.remove('active');
+    arrayCaruselImg[immagineAttiva].classList.remove('selected');
+    arrayCaruselCover[immagineAttiva].classList.remove('off');
+
+    if (immagineAttiva > 0) {
 
         //passo al precedente
         immagineAttiva--;
 
-        //aggiungo active al nuovo elemento
-        arrayItemSchede[immagineAttiva].classList.add('active');
-        arrayCaruselImg[immagineAttiva].classList.add('selected');
-        arrayCaruselCover[immagineAttiva].classList.add('off');
-
     }else if(immagineAttiva === 0){
-
-        //tolgo active
-        arrayItemSchede[immagineAttiva].classList.remove('active');
-        arrayCaruselImg[immagineAttiva].classList.remove('selected');
-        arrayCaruselCover[immagineAttiva].classList.remove('off');
 
         //torno alla prima
         immagineAttiva = arrayItemSchede.length - 1;
 
-        //aggiungo active
-        arrayItemSchede[immagineAttiva].classList.add('active');
-        arrayCaruselImg[immagineAttiva].classList.add('selected');
-        arrayCaruselCover[immagineAttiva].classList.add('off');
     }
+
+    //aggiungo active al nuovo elemento
+    arrayItemSchede[immagineAttiva].classList.add('active');
+    arrayCaruselImg[immagineAttiva].classList.add('selected');
+    arrayCaruselCover[immagineAttiva].classList.add('off');
 };

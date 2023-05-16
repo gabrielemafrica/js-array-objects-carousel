@@ -14,8 +14,21 @@ body{
     margin: 0 auto;
     display: flex;
     align-items: center;
+    position: relative;
+}
+/* play */
+#container-play{
+    position: absolute;
+    top: 210px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    z-index: 90;
 }
 
+.fa-regular{
+    cursor: pointer;
+}
 /* carusel e scheda */
 
 #container-schede{
